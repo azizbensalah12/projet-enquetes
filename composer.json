@@ -1,0 +1,20 @@
+{
+  "name": "student/web-survey-mvc",
+  "description": "Projet Technologies Web 2A - Gestion d’enquêtes (MVC + PDO)",
+  "type": "project",
+  "require": {
+    "php": ">=8.1",
+    "vlucas/phpdotenv": "^5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Core\\": "app/Core/"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ]
+  }
+}
