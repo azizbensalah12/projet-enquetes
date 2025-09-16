@@ -26,13 +26,19 @@ $router->post('/admin/users/{id}', ['App\\Controllers\\UserController', 'update'
 $router->post('/admin/users/{id}/delete', ['App\\Controllers\\UserController', 'destroy']);
 
 // Campaigns (admin + agent)
+// Campaigns (admin + agent)
 $router->get('/back/campaigns', ['App\\Controllers\\CampaignController', 'index']);
 $router->get('/back/campaigns/create', ['App\\Controllers\\CampaignController', 'create']);
 $router->post('/back/campaigns', ['App\\Controllers\\CampaignController', 'store']);
 $router->get('/back/campaigns/{id}/edit', ['App\\Controllers\\CampaignController', 'edit']);
 $router->post('/back/campaigns/{id}', ['App\\Controllers\\CampaignController', 'update']);
 $router->post('/back/campaigns/{id}/delete', ['App\\Controllers\\CampaignController', 'destroy']);
-$router->post('/back/campaigns/{id}/assign', ['App\\Controllers\\CampaignController', 'assignToClient']); 
+
+/* ➜ AJOUTER : */
+$router->get('/back/campaigns/{id}/assign', ['App\\Controllers\\CampaignController', 'assignForm']);
+$router->post('/back/campaigns/{id}/assign', ['App\\Controllers\\CampaignController', 'assignToClient']);
+$router->get('/back/campaigns/{id}/stats',  ['App\\Controllers\\CampaignController', 'stats']);
+$router->get('/back/campaigns/{id}/export', ['App\\Controllers\\CampaignController', 'exportCsv']);
 
 // Questions (admin + agent)
 $router->get('/back/questions', ['App\\Controllers\\QuestionController', 'index']);
@@ -49,3 +55,4 @@ $router->post('/surveys/{id}/submit', ['App\\Controllers\\SurveyController', 'su
 
 // Dispatch request
 $router->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
+// Stats + export CSV
